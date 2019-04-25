@@ -14,9 +14,9 @@ def sigmoid(x):
     s -- sigmoid(x)
     """
 
-    ### YOUR CODE HERE
-    raise NotImplementedError
-    ### END YOUR CODE
+    # YOUR CODE HERE
+    s = 1/(1+np.exp(-x))
+    # END YOUR CODE
 
     return s
 
