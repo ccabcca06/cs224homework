@@ -86,7 +86,7 @@ def test_softmax():
     """
     print("Running your tests...")
     ### YOUR CODE HERE
-    raise NotImplementedError
+    test4 = softmax(np.array([[1001,1002],[3,4]]))
     ### END YOUR CODE
 
 
