@@ -31,18 +31,30 @@ def softmax(x):
     if len(x.shape) > 1:
         # Matrix
         # YOUR CODE HERE
-        c = np.max(x,axis=1)
-        norm_x = np.transpose(np.subtract(np.transpose(x),c))
-        expx = np.exp(norm_x)
-        x = expx / np.sum(expx, axis=1)
+        #参考hankcs cs224n作业实现 https://github.com/hankcs/CS224n/blob/master/assignment1/q1_softmax.py
+        exp_normx = lambda a: np.exp(a - np.max(a))
+        denom = lambda a: 1.0/np.sum(a)
+        #使用lambda匿名函数定义softmax的数值平滑以及分母求和过程
+        x = np.apply_along_axis(exp_normx, 1, x)
+        denominator = np.apply_along_axis(denom, 1, x)
+        #numpy.apply_along_axis(func, axis, arr, *args, **kwargs),方法可以func函数沿axis定义的轴作用于arr数组
+
+
+        if len(denominator.shape) == 1:
+            denominator = denominator.reshape((denominator.shape[0], 1))
+
+        x = x * denominator
 
 
         # END YOUR CODE
     else:
         # Vector
         ### YOUR CODE HERE
-        c = np.max(x)
-        x = np.exp(x - c)/np.sum(np.exp(x - c))
+        x_max = np.max(x)
+        x = x - x_max
+        numerator = np.exp(x)
+        denominator = 1.0 / np.sum(numerator)
+        x = numerator.dot(denominator)
         ### END YOUR CODE
 
     assert x.shape == orig_shape
