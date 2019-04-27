@@ -21,8 +21,11 @@ def gradcheck_naive(f, x):
 
     # Iterate over all indexes ix in x to check the gradient.
     it = np.nditer(x, flags=['multi_index'], op_flags=['readwrite'])
+    # np.nditer是numpy array自带的迭代器,flags=['multi_index']表示对a进行多重索引
+    # op_flags=['readwrite']表示不仅可以对a进行read（读取），还可以write（写入）
     while not it.finished:
         ix = it.multi_index
+        # it.multi_index表示输出元素的索引
 
         # Try modifying x[ix] with h defined above to compute numerical
         # gradients (numgrad).
@@ -37,7 +40,20 @@ def gradcheck_naive(f, x):
         # to test cost functions with built in randomness later.
 
         ### YOUR CODE HERE:
-        raise NotImplementedError
+        x[ix] += h
+
+        random.setstate(rndstate)
+        new_f1 = f(x)[0]
+
+        x[ix] -= 2 * h
+
+        random.setstate(rndstate)
+        new_f2 = f(x)[0]
+
+        x[ix] += h
+
+        numgrad = (new_f1 - new_f2) / (2 * h)
+
         ### END YOUR CODE
 
         # Compare gradients
@@ -76,7 +92,7 @@ def your_sanity_checks():
     """
     print("Running your sanity checks...")
     ### YOUR CODE HERE
-    raise NotImplementedError
+    #raise NotImplementedError
     ### END YOUR CODE
 
 

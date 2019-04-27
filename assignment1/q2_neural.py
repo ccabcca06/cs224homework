@@ -30,7 +30,7 @@ def forward_backward_prop(X, labels, params, dimensions):
     ofs = 0
     Dx, H, Dy = (dimensions[0], dimensions[1], dimensions[2])
 
-    W1 = np.reshape(params[ofs:ofs+ Dx * H], (Dx, H))
+    W1 = np.reshape(params[ofs:ofs + Dx * H], (Dx, H))
     ofs += Dx * H
     b1 = np.reshape(params[ofs:ofs + H], (1, H))
     ofs += H
@@ -39,14 +39,25 @@ def forward_backward_prop(X, labels, params, dimensions):
     b2 = np.reshape(params[ofs:ofs + Dy], (1, Dy))
 
     # Note: compute cost based on `sum` not `mean`.
-    ### YOUR CODE HERE: forward propagation
+    # YOUR CODE HERE: forward propagation
     h = sigmoid(np.dot(X, W1) + b1)
+    # 从输入X到隐藏层h的映射
     y_hat = softmax(np.dot(h, W2) + b2)
-    ### END YOUR CODE
+    # 从隐藏层h到输出y_hat的映射
+    # END YOUR CODE
 
     ### YOUR CODE HERE: backward propagation
-    cost = np.sum(labels * np.log(y_hat))
-    raise NotImplementedError
+    cost = np.sum(-np.log(y_hat[labels == 1])) / X.shape[0]
+    d3 = (y_hat - labels) / X.shape[0]
+
+    gradW2 = np.dot(h.T, d3)
+    gradb2 = np.sum(d3, 0, keepdims=True)
+
+    dh = np.dot(d3, W2.T)
+    grad_h = sigmoid_grad(h) * dh
+
+    gradW1 = np.dot(X.T, grad_h)
+    gradb1 = np.sum(grad_h, 0)
     ### END YOUR CODE
 
     ### Stack gradients (do not modify)
@@ -86,7 +97,7 @@ def your_sanity_checks():
     """
     print("Running your sanity checks...")
     ### YOUR CODE HERE
-    raise NotImplementedError
+    #raise NotImplementedError
     ### END YOUR CODE
 
 
