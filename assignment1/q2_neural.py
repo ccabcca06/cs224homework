@@ -64,6 +64,7 @@ def forward_backward_prop(X, labels, params, dimensions):
     ### END YOUR CODE
 
     ### Stack gradients (do not modify)
+    # np.concatenate用于拼接向量，flatten()将多维数组"压扁"到一维（即转换为向量）
     grad = np.concatenate((gradW1.flatten(), gradb1.flatten(),
         gradW2.flatten(), gradb2.flatten()))
 

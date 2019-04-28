@@ -10,8 +10,9 @@ def gradcheck_naive(f, x):
 
     Arguments:
     f -- a function that takes a single argument and outputs the
-         cost and its gradients
-    x -- the point (numpy array) to check the gradient at
+         cost and its gradients(f是一个计算损失函数值和梯度的函数)
+    x -- the point (numpy array) to check the gradient at（数据，gradcheck方法以该数据值为基础，
+    通过梯度的定义方法对梯度的合理取值范围进行计算）
     """
 
     rndstate = random.getstate()
@@ -25,7 +26,7 @@ def gradcheck_naive(f, x):
     # op_flags=['readwrite']表示不仅可以对a进行read（读取），还可以write（写入）
     while not it.finished:
         ix = it.multi_index
-        # it.multi_index表示输出元素的索引
+        # it.multi_index表示输出元素的索引，形式类似(1,1),(1,2),...,(x,y)...
 
         # Try modifying x[ix] with h defined above to compute numerical
         # gradients (numgrad).
@@ -53,7 +54,7 @@ def gradcheck_naive(f, x):
         x[ix] += h
 
         numgrad = (new_f1 - new_f2) / (2 * h)
-
+        # lim h -->0，这里用1e-4近似
         ### END YOUR CODE
 
         # Compare gradients
