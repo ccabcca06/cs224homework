@@ -49,6 +49,7 @@ def forward_backward_prop(X, labels, params, dimensions):
     ### YOUR CODE HERE: backward propagation
     cost = np.sum(-np.log(y_hat[labels == 1])) / X.shape[0]
     d3 = (y_hat - labels) / X.shape[0]
+    # 按照交叉熵损失函数的定义：CE(y,y_hat)=sum（y*log(y_hat))构建损失函数
 
     gradW2 = np.dot(h.T, d3)
     gradb2 = np.sum(d3, 0, keepdims=True)
@@ -58,6 +59,8 @@ def forward_backward_prop(X, labels, params, dimensions):
 
     gradW1 = np.dot(X.T, grad_h)
     gradb1 = np.sum(grad_h, 0)
+
+    # 反向传播梯度误差回传，通过矩阵乘法实现
     ### END YOUR CODE
 
     ### Stack gradients (do not modify)
