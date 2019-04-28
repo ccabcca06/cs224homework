@@ -77,7 +77,7 @@ def sanity_check():
     gradcheck.
     """
     print("Running sanity check...")
-
+# 随机生成一些数据用于测试
     N = 20
     dimensions = [10, 5, 10]
     data = np.random.randn(N, dimensions[0])   # each row will be a datum
