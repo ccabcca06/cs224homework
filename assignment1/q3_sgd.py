@@ -4,10 +4,13 @@
 SAVE_PARAMS_EVERY = 5000
 
 import glob
+# glob模块是最简单的模块之一，内容非常少。用它可以查找符合特定规则的文件路径名
 import random
 import numpy as np
 import os.path as op
+# os.path 模块主要用于获取文件的属性
 import pickle
+# pickle 是一个 python 中, 压缩/保存/提取文件的模块
 
 
 def load_saved_params():
@@ -85,7 +88,10 @@ def sgd(f, x0, step, iterations, postprocessing=None, useSaved=False,
 
         cost = None
         ### YOUR CODE HERE
-        raise NotImplementedError
+        cost, grad = f(x)
+        x -= step * grad
+        postprocessing(x)
+
         ### END YOUR CODE
 
         if iter % PRINT_EVERY == 0:
