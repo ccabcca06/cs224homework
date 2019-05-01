@@ -89,8 +89,11 @@ def sgd(f, x0, step, iterations, postprocessing=None, useSaved=False,
         cost = None
         ### YOUR CODE HERE
         cost, grad = f(x)
+        # 计算损失值和梯度
         x -= step * grad
+        # 通过步长控制更新梯度
         postprocessing(x)
+        # 参数后处理
 
         ### END YOUR CODE
 
