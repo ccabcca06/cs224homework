@@ -1,3 +1,3 @@
 
 test ubuntu git push
-ignore workspace11
+ignore workspace1
