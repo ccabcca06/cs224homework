@@ -12,10 +12,15 @@ def normalizeRows(x):
 
     Implement a function that normalizes each row of a matrix to have
     unit length.
+    通过这个方法对数据进行归一化
     """
 
     ### YOUR CODE HERE
-    raise NotImplementedError
+    denom = np.apply_along_axis(lambda x: np.sqrt(x.T.dot(x)), 1, x)
+    # denom为x的行向量的模，若dim(x)= (m,n)，则axis=1,dim(denom)=(1,n);axis=0,dim(denom)=(m,1)
+    x /= denom[:, None]
+    # x每个元素除以对应行向量的模以完成归一化，denom[:, None]切片操作将一维向量转换为二维矩阵以对x进行广播操作
+    #raise NotImplementedError
     ### END YOUR CODE
 
     return x
