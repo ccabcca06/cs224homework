@@ -46,11 +46,11 @@ def softmaxCostAndGradient(predicted, target, outputVectors, dataset):
     Arguments:
     predicted -- numpy ndarray, predicted word vector (\hat{v} in
                  the written component)
-                 predicted参数为模型输出的预测y_hat
+                 predicted参数为中心词词向量vc
     target -- integer, the index of the target word
-              target参数为样本的标签y
+
     outputVectors -- "output" vectors (as rows) for all tokens
-                      对所有token的输出向量（行向量）
+                      outputVector组成了softmax的分母，在作业pdf中用w表示
     dataset -- needed for negative sampling, unused here.
                dataset数据需要经过下采样得到，该方法中不涉及
 
@@ -59,27 +59,36 @@ def softmaxCostAndGradient(predicted, target, outputVectors, dataset):
     cost参数返回softmax单词预测的损失
     gradPred -- the gradient with respect to the predicted word
            vector
-    gradPred参数返回中心词向量的梯度
+    gradPred参数返回predicted的梯度
     grad -- the gradient with respect to all the other word
            vectors
-    grad参数返回所有其他词向量的梯度
+    grad参数返回outputVectors的梯度
     We will not provide starter code for this function, but feel
     free to reference the code you previously wrote for this
     assignment!
     """
 
     ### YOUR CODE HERE
-    # 补充注释
-    # skip-gram模型的形式为：yo_hat = P(o|c) = exp(uo.T.dot(vc))/sum(exp(uW.T.dot(vc)))
-    # 其中，
-    # c表示skip-gram的中心词向量（输入）；
-    # o表示c的上下文单词（输出）；
-    # yo_hat表示模型输入为中心词c时输出上下文单词o的概率；
-    # uo为o的one-hot词向量；
-    # vc为c的one-hot词向量；
-    # uw为计算分母项涉及的词向量，理论上可以使用整个词表，实际上出于计算成本考虑通常由负采样得到；
-    # uW为所有uw组合得到的矩阵
-    raise NotImplementedError
+    ## Gradient for $\hat{\bm{v}}$:
+    # 补充注释：
+    # softmax交叉熵损失函数定义为:J_softmax-CE(o,vc,U)=CE(y,y_hat)
+    #  Calculate the predictions:
+    vhat = predicted
+    z = np.dot(outputVectors, vhat)
+    preds = softmax(z)
+
+    #  Calculate the cost:
+    cost = -np.log(preds[target])
+
+    #  Gradients
+    z = preds.copy()
+    z[target] -= 1.0
+
+    grad = np.outer(z, vhat)
+    # outer为求外积
+    gradPred = np.dot(outputVectors.T, z)
+    ### END YOUR CODE
+    #raise NotImplementedError
     ### END YOUR CODE
 
     return cost, gradPred, grad
@@ -152,6 +161,16 @@ def skipgram(currentWord, C, contextWords, tokens, inputVectors, outputVectors,
     gradOut = np.zeros(outputVectors.shape)
 
     ### YOUR CODE HERE
+    # 补充注释
+    # skip-gram模型的形式为：yo_hat = P(o|c) = exp(uo.T.dot(vc))/sum(exp(U.T.dot(vc)))
+    # 其中，
+    # c表示skip-gram的中心词向量（输入）；
+    # o表示c的上下文单词（输出）；
+    # yo_hat表示模型输入为中心词c时输出上下文单词o的概率,即本方法的predict；
+    # uo为o的one-hot词向量；
+    # vc为c的one-hot词向量
+    # u为计算分母项涉及的词向量，理论上可以使用整个词表，实际上出于计算成本考虑通常由负采样得到；
+    # U为所有u组合得到的矩阵
     raise NotImplementedError
     ### END YOUR CODE
 

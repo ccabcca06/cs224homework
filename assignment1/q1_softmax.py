@@ -52,16 +52,18 @@ def softmax(x):
         # YOUR CODE HERE
         x_max = np.max(x)
         x = x - x_max
+        # 减去最大值使数值稳定
         numerator = np.exp(x)
+        # 分子
         denominator = 1.0 / np.sum(numerator)
+        # 分母
         x = numerator.dot(denominator)
+        # 构建softmax
         # END YOUR CODE
 
     assert x.shape == orig_shape
     return x
 
-#from q1_softmax import softmax
-#return 20 if softmax(测试值) == 正确值 else 0
 
 def test_softmax_basic():
     """
