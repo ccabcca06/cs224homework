@@ -76,9 +76,11 @@ def softmaxCostAndGradient(predicted, target, outputVectors, dataset):
     vhat = predicted
     z = np.dot(outputVectors, vhat)
     preds = softmax(z)
+    # 输出
 
     #  Calculate the cost:
     cost = -np.log(preds[target])
+    # 交叉熵损失的定义
 
     #  Gradients
     z = preds.copy()
