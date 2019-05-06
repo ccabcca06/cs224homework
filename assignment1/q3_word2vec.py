@@ -46,11 +46,12 @@ def softmaxCostAndGradient(predicted, target, outputVectors, dataset):
     Arguments:
     predicted -- numpy ndarray, predicted word vector (\hat{v} in
                  the written component)
-                 predicted参数为中心词词向量vc
+                 中心词词向量vc
     target -- integer, the index of the target word
+              目标词的索引值
 
     outputVectors -- "output" vectors (as rows) for all tokens
-                      outputVector组成了softmax的分母，在作业pdf中用w表示
+                      作业pdf公式(4)中的u
     dataset -- needed for negative sampling, unused here.
                dataset数据需要经过下采样得到，该方法中不涉及
 
@@ -71,26 +72,24 @@ def softmaxCostAndGradient(predicted, target, outputVectors, dataset):
     ### YOUR CODE HERE
     ## Gradient for $\hat{\bm{v}}$:
     # 补充注释：
+    # softmaxCostAndGradient方法用于计算word2vec的softmax损失和梯度，作为skip-gram和C-BOW的组件使用
     # softmax交叉熵损失函数定义为:J_softmax-CE(o,vc,U)=CE(y,y_hat)
     #  Calculate the predictions:
-    vhat = predicted
-    z = np.dot(outputVectors, vhat)
-    preds = softmax(z)
-    # 输出
+    x = predicted  # shape(节点,1)，（3,1）
+    # forward propagation
+    w = outputVectors  # shape(样本，特征)，（5,3）
+    z = np.dot(w, x)  # shape(5,1)
+    a = softmax(z)  # shape(5,1)
+    # compute cost
+    cost = np.log(a[target])
+    # backward propagation
+    a[target] -= 1.0  # shape(5,1)
+    dx = np.dot(w.T, a)  # shape(1,3)=shape(1,5).dot.shape(5,3)
+    dw = np.dot(a.reshape(1, 1), x.T.reshape(1, 1))
 
-    #  Calculate the cost:
-    cost = -np.log(preds[target])
-    # 交叉熵损失的定义
-
-    #  Gradients
-    z = preds.copy()
-    z[target] -= 1.0
-
-    grad = np.outer(z, vhat)
-    # outer为求外积
-    gradPred = np.dot(outputVectors.T, z)
-    ### END YOUR CODE
-    #raise NotImplementedError
+    gradPred = dx
+    grad = dw
+    # 作业答案
     ### END YOUR CODE
 
     return cost, gradPred, grad
