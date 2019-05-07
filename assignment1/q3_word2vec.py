@@ -128,7 +128,6 @@ def negSamplingCostAndGradient(predicted, target, outputVectors, dataset,
 
     ### YOUR CODE HERE
 
-
     ### END YOUR CODE
 
     return cost, gradPred, grad
@@ -167,8 +166,7 @@ def skipgram(currentWord, C, contextWords, tokens, inputVectors, outputVectors,
     predicted = inputVectors[source] # 输入词到词向量映射
     for target_word in contextWords:
         target = tokens[target_word]
-        cost_one, gradPred, grad = word2vecCostAndGradient(
-            predicted, target, outputVectors, dataset)
+        cost_one, gradPred, grad = word2vecCostAndGradient(predicted, target, outputVectors, dataset)
         cost += cost_one
         gradIn[source] = gradIn[source] + gradPred # 输入单个词向量更新
         gradOut += grad
@@ -195,7 +193,16 @@ def cbow(currentWord, C, contextWords, tokens, inputVectors, outputVectors,
     gradOut = np.zeros(outputVectors.shape)
 
     ### YOUR CODE HERE
-    raise NotImplementedError
+    source = [tokens[source_word] for source_word in contextWords]
+    predicted = inputVectors[source]
+    predicted = np.sum(predicted, axis=0)
+
+    target = tokens[contextWords]
+    cost_one, gradPred, grad = word2vecCostAndGradient(predicted, target, outputVectors, dataset)
+    cost += cost_one
+    for i in source:
+        gradIn[i] = gradIn[i] + gradPred
+    gradOut += grad
     ### END YOUR CODE
 
     return cost, gradIn, gradOut
