@@ -4,7 +4,6 @@
     <list default="true" id="4aa02fb1-1e5a-47c2-bb01-3fca46076365" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/q3_word2vec.py" beforeDir="false" afterPath="$PROJECT_DIR$/q3_word2vec.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pytorch tutorials/60 minute blitz.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../pytorch tutorials/60 minute blitz.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,15 +37,15 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="72" />
-          <entry key="py" value="3184" />
+          <entry key="py" value="3646" />
           <entry key="sh" value="1" />
-          <entry key="txt" value="174" />
+          <entry key="txt" value="183" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="175" />
-          <entry key="Python" value="3256" />
+          <entry key="PLAIN_TEXT" value="184" />
+          <entry key="Python" value="3718" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -75,8 +74,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/q3_word2vec.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="164" column="5" lean-forward="true" selection-start-line="164" selection-start-column="5" selection-end-line="164" selection-end-column="5" />
+            <state relative-caret-position="-172">
+              <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
               <folding>
                 <element signature="e#23#41#0" expanded="true" />
               </folding>
@@ -453,7 +452,21 @@
       <option name="project" value="LOCAL" />
       <updated>1557204389968</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="按课后答案修改">
+      <created>1557232184774</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1557232184774</updated>
+    </task>
+    <task id="LOCAL-00024" summary="按课后答案修改">
+      <created>1557233424093</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1557233424093</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TodoView">
@@ -469,7 +482,7 @@
     <frame x="20" y="43" width="1400" height="767" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24945612" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24945612" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -480,7 +493,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3288889" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3288889" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3288889" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3288889" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3288889" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -534,7 +547,8 @@
     <MESSAGE value="word2vec未完成" />
     <MESSAGE value="未完成word2vec的commit@20190505" />
     <MESSAGE value="按课后答案修改代码" />
-    <option name="LAST_COMMIT_MESSAGE" value="按课后答案修改代码" />
+    <MESSAGE value="按课后答案修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="按课后答案修改" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -646,8 +660,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/q3_word2vec.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="164" column="5" lean-forward="true" selection-start-line="164" selection-start-column="5" selection-end-line="164" selection-end-column="5" />
+        <state relative-caret-position="-172">
+          <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
           <folding>
             <element signature="e#23#41#0" expanded="true" />
           </folding>

@@ -127,7 +127,21 @@ def negSamplingCostAndGradient(predicted, target, outputVectors, dataset,
     indices.extend(getNegativeSamples(target, dataset, K))
 
     ### YOUR CODE HERE
+    grad = np.zeros(outputVectors.shape)
+    gradPred = np.zeros(predicted.shape)
+    cost = 0
+    z = sigmoid(np.dot(outputVectors[target], predicted))
 
+    cost -= np.log(z)
+    grad[target] += predicted * (z - 1.0)
+    gradPred += outputVectors[target] * (z - 1.0)
+
+    for k in range(K):
+        samp = dataset.sampleTokenIdx()
+        z = sigmoid(np.dot(outputVectors[samp], predicted))
+        cost -= np.log(1.0 - z)
+        grad[samp] += predicted * z
+        gradPred += outputVectors[samp] * z
     ### END YOUR CODE
 
     return cost, gradPred, grad
@@ -192,7 +206,8 @@ def cbow(currentWord, C, contextWords, tokens, inputVectors, outputVectors,
     gradIn = np.zeros(inputVectors.shape)
     gradOut = np.zeros(outputVectors.shape)
 
-    ### YOUR CODE HERE
+    # YOUR CODE HERE
+    # 上下文作为输入，中心词是目标
     source = [tokens[source_word] for source_word in contextWords]
     predicted = inputVectors[source]
     predicted = np.sum(predicted, axis=0)
@@ -201,9 +216,9 @@ def cbow(currentWord, C, contextWords, tokens, inputVectors, outputVectors,
     cost_one, gradPred, grad = word2vecCostAndGradient(predicted, target, outputVectors, dataset)
     cost += cost_one
     for i in source:
-        gradIn[i] = gradIn[i] + gradPred
+        gradIn[i] = gradIn[i] + gradPred  # 输入上下文词向量更新
     gradOut += grad
-    ### END YOUR CODE
+    # END YOUR CODE
 
     return cost, gradIn, gradOut
 
