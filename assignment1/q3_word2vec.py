@@ -127,7 +127,8 @@ def negSamplingCostAndGradient(predicted, target, outputVectors, dataset,
     indices.extend(getNegativeSamples(target, dataset, K))
 
     ### YOUR CODE HERE
-    raise NotImplementedError
+
+
     ### END YOUR CODE
 
     return cost, gradPred, grad
@@ -158,22 +159,20 @@ def skipgram(currentWord, C, contextWords, tokens, inputVectors, outputVectors,
     """
 
     cost = 0.0
-    gradIn = np.zeros(inputVectors.shape)
-    gradOut = np.zeros(outputVectors.shape)
+    gradIn = np.zeros(inputVectors.shape)  # (5,3)
+    gradOut = np.zeros(outputVectors.shape) # (5,3)
 
-    ### YOUR CODE HERE
-    # 补充注释
-    # skip-gram模型的形式为：yo_hat = P(o|c) = exp(uo.T.dot(vc))/sum(exp(U.T.dot(vc)))
-    # 其中，
-    # c表示skip-gram的中心词向量（输入）；
-    # o表示c的上下文单词（输出）；
-    # yo_hat表示模型输入为中心词c时输出上下文单词o的概率,即本方法的predict；
-    # uo为o的one-hot词向量；
-    # vc为c的one-hot词向量
-    # u为计算分母项涉及的词向量，理论上可以使用整个词表，实际上出于计算成本考虑通常由负采样得到；
-    # U为所有u组合得到的矩阵
-    raise NotImplementedError
-    ### END YOUR CODE
+    # YOUR CODE HERE
+    source = tokens[currentWord]
+    predicted = inputVectors[source] # 输入词到词向量映射
+    for target_word in contextWords:
+        target = tokens[target_word]
+        cost_one, gradPred, grad = word2vecCostAndGradient(
+            predicted, target, outputVectors, dataset)
+        cost += cost_one
+        gradIn[source] = gradIn[source] + gradPred # 输入单个词向量更新
+        gradOut += grad
+    # END YOUR CODE
 
     return cost, gradIn, gradOut
 
