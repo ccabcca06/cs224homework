@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4aa02fb1-1e5a-47c2-bb01-3fca46076365" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/q4_sentiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/q4_sentiment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pytorch tutorials/.ipynb_checkpoints/60 minute blitz-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../pytorch tutorials/.ipynb_checkpoints/60 minute blitz-checkpoint.ipynb" afterDir="false" />
-    </list>
+    <list default="true" id="4aa02fb1-1e5a-47c2-bb01-3fca46076365" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +40,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/q4_sentiment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="53" column="31" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
+            <state relative-caret-position="285">
+              <caret line="21" column="19" lean-forward="true" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -116,6 +112,13 @@
               <item name="utils" type="462c0819:PsiDirectoryNode" />
               <item name="datasets" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="assignment1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment1" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="datasets" type="462c0819:PsiDirectoryNode" />
+              <item name="stanfordSentimentTreebank" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -146,6 +149,28 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.q4_sentiment">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="assignment1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="q1_softmax" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="assignment1" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -283,7 +308,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556172581101</updated>
-      <workItem from="1557907568957" duration="497000" />
+      <workItem from="1557907568957" duration="1021000" />
     </task>
     <task id="LOCAL-00001" summary="update sigmoid">
       <created>1556208257142</created>
@@ -467,11 +492,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557276471851</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="已完成的最终答案">
+      <created>1557908253490</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1557908253490</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="497000" />
+    <option name="totallyTimeSpent" value="1021000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -484,16 +516,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="20" y="43" width="1400" height="767" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2533137" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2533137" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3288889" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3288889" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -501,7 +532,8 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3288889" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3288889" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3288889" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="10" visible="true" weight="0.3288889" />
+      <window_info anchor="right" x="0" y="0" width="300" height="567" id="Documentation" side_tool="true" visible="true" weight="0.3298969" />
       <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="SciView" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -557,7 +589,8 @@
     <MESSAGE value="按课后答案修改代码" />
     <MESSAGE value="按课后答案修改" />
     <MESSAGE value="按课后答案修改并成功运行" />
-    <option name="LAST_COMMIT_MESSAGE" value="按课后答案修改并成功运行" />
+    <MESSAGE value="已完成的最终答案" />
+    <option name="LAST_COMMIT_MESSAGE" value="已完成的最终答案" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -682,8 +715,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/q4_sentiment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="53" column="31" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
+        <state relative-caret-position="285">
+          <caret line="21" column="19" lean-forward="true" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
         </state>
       </provider>
     </entry>
