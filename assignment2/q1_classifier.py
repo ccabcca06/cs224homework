@@ -70,7 +70,7 @@ class SoftmaxModel(Model):
             feed_dict: The feed dictionary mapping from placeholders to values.
         """
         ### YOUR CODE HERE
-        feed_dict = {self.input_placeholder:inputs_batch, self.labels_placeholder:labels_batch}
+        feed_dict = {self.input_placeholder: inputs_batch, self.labels_placeholder: labels_batch}
         ### END YOUR CODE
         return feed_dict
 
@@ -167,7 +167,7 @@ class SoftmaxModel(Model):
             start_time = time.time()
             average_loss = self.run_epoch(sess, inputs, labels)
             duration = time.time() - start_time
-            print ('Epoch {:}: loss = {:.2f} ({:.3f} sec)'.format(epoch, average_loss, duration))
+            print('Epoch {:}: loss = {:.2f} ({:.3f} sec)'.format(epoch, average_loss, duration))
             losses.append(average_loss)
         return losses
 
@@ -212,6 +212,7 @@ def t_softmax_model():
     # rapidly.
     assert losses[-1] < .5
     print ("Basic (non-exhaustive) classifier tests pass")
+
 
 if __name__ == "__main__":
     t_softmax_model()
