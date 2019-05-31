@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="a8828383-b5bf-488b-bf5d-aa37c8d5c9e7" name="GTX1070_home" url="http://192.168.0.106">
+        <fileTransfer host="192.168.0.106" port="22" rootFolder="/home/chen/pycharmRemote" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
