@@ -21,6 +21,9 @@ class PartialParse(object):
         self.sentence = sentence
 
         ### YOUR CODE HERE
+        self.stack = ['ROOT']
+        self.buffer = sentence[:]
+        self.dependencies = []
         ### END YOUR CODE
 
     def parse_step(self, transition):
@@ -31,6 +34,15 @@ class PartialParse(object):
                         and right-arc transitions.
         """
         ### YOUR CODE HERE
+        if transition == "S":
+            word = self.buffer.pop(0)
+            self.stack.append(word)
+        elif transition == "LA":
+            leftword = self.stack.pop(-2)
+            self.dependencies.append((self.stack[-1], leftword))
+        elif transition == "RA":
+            rightword = self.stack.pop(-1)
+            self.dependencies.append((self.stack[-1], rightword))
         ### END YOUR CODE
 
     def parse(self, transitions):
@@ -65,6 +77,19 @@ def minibatch_parse(sentences, model, batch_size):
     """
 
     ### YOUR CODE HERE
+    dependencies = []
+    parse = [PartialParse(sentence) for sentence in sentences]  # 初始化多个对象，sentences是整个batch
+    while (len(parse) > 0):
+        parse_mini = parse[:batch_size]  # 对于每个batch
+        while (len(parse_mini) > 0):  # 当batch里面有sentence
+            transitions = model.predict(parse_mini)  # 用模型预测动作，parse_mini为一个list嵌套，外层为一个个句子，内层为一个句子的一个个单词
+            for i, act in enumerate(transitions):
+                parse_mini[i].parse_step(act)  # 确定依存关系
+            # not stop if len(parse.stack) > 1 or len(parse.buffer) > 0
+            # only stop if if len(parse.stack) == 1 && len(parse.buffer) == 0
+            parse_mini = [parse for parse in parse_mini if len(parse.stack) > 1 or len(parse.buffer) > 0]
+        dependencies.extend(parse.dependencies for parse in parse[:batch_size])
+        parse = parse[batch_size:]
     ### END YOUR CODE
 
     return dependencies
@@ -155,6 +180,7 @@ def t_minibatch_parse():
     t_dependencies("minibatch_parse", deps[3],
                       (('again', 'ROOT'), ('again', 'arcs'), ('again', 'left'), ('again', 'only')))
     print ("minibatch_parse test passed!")
+
 
 if __name__ == '__main__':
     t_parse_step()

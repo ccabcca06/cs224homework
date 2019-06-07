@@ -96,6 +96,7 @@ def make_windowed_data(data, start, end, window_size = 1):
     windowed_data = []
     for sentence, labels in data:
         ### YOUR CODE HERE (5-20 lines)
+        windowed_data.append(sentence, labels)
         ### END YOUR CODE
     return windowed_data
 

@@ -1,4 +1,3 @@
-#!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
 """
 A model for named entity recognition.
@@ -15,6 +14,7 @@ from defs import LBLS
 logger = logging.getLogger("hw3")
 logger.setLevel(logging.DEBUG)
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
+
 
 class NERModel(Model):
     """
@@ -43,7 +43,6 @@ class NERModel(Model):
         """
         raise NotImplementedError("Each Model must re-implement this method.")
 
-
     def evaluate(self, sess, examples, examples_raw):
         """Evaluates model performance on @examples.
 
@@ -59,7 +58,7 @@ class NERModel(Model):
         token_cm = ConfusionMatrix(labels=LBLS)
 
         correct_preds, total_correct, total_preds = 0., 0., 0.
-        for _, labels, labels_  in self.output(sess, examples_raw, examples):
+        for _, labels, labels_ in self.output(sess, examples_raw, examples):
             for l, l_ in zip(labels, labels_):
                 token_cm.update(l, l_)
             gold = set(get_chunks(labels))
@@ -73,13 +72,14 @@ class NERModel(Model):
         f1 = 2 * p * r / (p + r) if correct_preds > 0 else 0
         return token_cm, (p, r, f1)
 
-
     def run_epoch(self, sess, train_examples, dev_set, train_examples_raw, dev_set_raw):
-        prog = Progbar(target=1 + int(len(train_examples) / self.config.batch_size))
+        prog = Progbar(
+            target=1 + int(len(train_examples) / self.config.batch_size))
         for i, batch in enumerate(minibatches(train_examples, self.config.batch_size)):
             loss = self.train_on_batch(sess, *batch)
             prog.update(i + 1, [("train loss", loss)])
-            if self.report: self.report.log_train_loss(loss)
+            if self.report:
+                self.report.log_train_loss(loss)
         print("")
 
         #logger.info("Evaluating on training data")
@@ -102,7 +102,8 @@ class NERModel(Model):
         Reports the output of the model on examples (uses helper to featurize each example).
         """
         if inputs is None:
-            inputs = self.preprocess_sequence_data(self.helper.vectorize(inputs_raw))
+            inputs = self.preprocess_sequence_data(
+                self.helper.vectorize(inputs_raw))
 
         preds = []
         prog = Progbar(target=1 + int(len(inputs) / self.config.batch_size))
@@ -122,11 +123,13 @@ class NERModel(Model):
 
         for epoch in range(self.config.n_epochs):
             logger.info("Epoch %d out of %d", epoch + 1, self.config.n_epochs)
-            score = self.run_epoch(sess, train_examples, dev_set, train_examples_raw, dev_set_raw)
+            score = self.run_epoch(sess, train_examples,
+                                   dev_set, train_examples_raw, dev_set_raw)
             if score > best_score:
                 best_score = score
                 if saver:
-                    logger.info("New best score! Saving model in %s", self.config.model_output)
+                    logger.info("New best score! Saving model in %s",
+                                self.config.model_output)
                     saver.save(sess, self.config.model_output)
             print("")
             if self.report:
